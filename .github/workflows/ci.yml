@@ -24,7 +24,9 @@ jobs:
         run: pip3 install ansible molecule molecule-plugins[docker] yamllint ansible-lint
 
       - name: Run Molecule tests.
-        run: molecule test
+        run: |
+          pwd
+          molecule test
         env:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
