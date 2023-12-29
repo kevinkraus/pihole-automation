@@ -1,6 +1,12 @@
 ---
+driver:
+  name: docker
 platforms:
-  - name: instance
-    # you might want to add your own variables here based on what provisioning
-    # you are doing like:
-    # image: quay.io/centos/centos:stream8
+  - name: instance-docker
+    image: docker.io/debian:bullseye
+    pre_build_image: true
+provisioner:
+  name: ansible
+verifier:
+  name: ansible
+
