@@ -28,7 +28,7 @@ jobs:
         working-directory: ansible_collections/kraus/pihole_automation
 
       - name: Run Molecule tests.
-        working-directory: ansible_collections/kraus/pihole_automation
+        working-directory: ansible_collections/kraus/pihole_automation/extensions
         run: |
           pwd
           molecule test
@@ -36,4 +36,3 @@ jobs:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
           MOLECULE_DISTRO: ${{ matrix.distro }}
-        working-directory: extensions
