@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+env:
+  COLLECTION_PATH_PREFIX: ansible_collections/kraus/pihole_automation
+
 jobs:
   test:
     name: Molecule tests
@@ -13,7 +16,7 @@ jobs:
       - name: Check out the codebase.
         uses: actions/checkout@v4
         with:
-          path: ansible_collections/kraus/pihole_automation
+          path: $COLLECTION_PATH_PREFIX
 
       - name: Set up Python 3.
         uses: actions/setup-python@v5
@@ -24,7 +27,7 @@ jobs:
         run: pip3 install ansible molecule molecule-plugins[docker] yamllint ansible-lint
 
       - name: Run Molecule tests.
-        working-directory: ansible_collections/kraus/pihole_automation/extensions
+        working-directory: $COLLECTION_PATH_PREFIX/extensions
         run: |
           molecule test
         env:
